@@ -58,7 +58,8 @@ def load_audio(file: str, sr: int = SAMPLE_RATE):
             str(sr),
             "-",
         ]
-        out = subprocess.run(cmd, capture_output=True, check=True).stdout
+        #out = subprocess.run(cmd, capture_output=True, check=True).stdout
+        out = subprocess.run(cmd, capture_output=True, check=True, shell = True).stdout
     except subprocess.CalledProcessError as e:
         raise RuntimeError(f"Failed to load audio: {e.stderr.decode()}") from e
 
